@@ -118,7 +118,21 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/index.ts":[function(require,module,exports) {
-console.log('hi there!');
+/// <reference types="@types/google.maps" />
+var map = document.getElementById('map');
+// import { User } from './User';
+// import { Company } from './Company';
+// const user = new User();
+// console.log(user);
+// const company = new Company();
+// console.log(company);
+new google.maps.Map(map, {
+  zoom: 1,
+  center: {
+    lat: 0,
+    lng: 0
+  }
+});
 },{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
