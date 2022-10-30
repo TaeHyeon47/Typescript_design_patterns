@@ -117,23 +117,43 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/index.ts":[function(require,module,exports) {
+})({"src/CustomMap.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CustomMap = void 0;
+var CustomMap = /** @class */function () {
+  function CustomMap(divId) {
+    var mapHtml = document.getElementById(divId);
+    this.googleMap = new google.maps.Map(mapHtml, {
+      zoom: 1,
+      center: {
+        lat: 0,
+        lng: 0
+      }
+    });
+  }
+  return CustomMap;
+}();
+exports.CustomMap = CustomMap;
+},{}],"src/index.ts":[function(require,module,exports) {
+"use strict";
+
 /// <reference types="@types/google.maps" />
-var map = document.getElementById('map');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 // import { User } from './User';
 // import { Company } from './Company';
+var CustomMap_1 = require("./CustomMap");
+new CustomMap_1.CustomMap('map');
 // const user = new User();
 // console.log(user);
 // const company = new Company();
 // console.log(company);
-new google.maps.Map(map, {
-  zoom: 1,
-  center: {
-    lat: 0,
-    lng: 0
-  }
-});
-},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./CustomMap":"src/CustomMap.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
