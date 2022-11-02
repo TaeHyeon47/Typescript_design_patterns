@@ -136911,21 +136911,13 @@ var CustomMap = /** @class */function () {
       }
     });
   }
-  CustomMap.prototype.addUserMarker = function (user) {
+  CustomMap.prototype.addMarker = function (mappable) {
+    mappable.location;
     new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: user.location.lat,
-        lng: user.location.lng
-      }
-    });
-  };
-  CustomMap.prototype.addCompanyMarker = function (company) {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.lng
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
       }
     });
   };
@@ -136971,8 +136963,8 @@ var Company_1 = require("./Company");
 var user = new User_1.User();
 var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map');
-customMap.addUserMarker(user);
-customMap.addCompanyMarker(company);
+customMap.addMarker(user);
+// customMap.addCompanyMarker(company);
 // const user = new User();
 // console.log(user);
 // const company = new Company();
