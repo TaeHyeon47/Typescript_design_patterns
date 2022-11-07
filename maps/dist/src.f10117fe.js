@@ -136884,7 +136884,6 @@ var faker_1 = __importDefault(require("faker"));
 var User = /** @class */function () {
   function User() {
     this.name = faker_1.default.name.firstName();
-    console.log(this.location);
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
@@ -136896,6 +136895,8 @@ exports.User = User;
 },{"faker":"node_modules/faker/index.js"}],"src/CustomMap.ts":[function(require,module,exports) {
 "use strict";
 
+// import { User } from './User';
+// import { Company } from './Company';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -136912,13 +136913,19 @@ var CustomMap = /** @class */function () {
     });
   }
   CustomMap.prototype.addMarker = function (mappable) {
-    mappable.location;
-    new google.maps.Marker({
+    var _this = this;
+    var marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    });
+    var infoWindow = new google.maps.InfoWindow({
+      content: 'Hi there!'
+    });
+    marker.addListener('click', function () {
+      infoWindow.open(_this.googleMap, marker);
     });
   };
   return CustomMap;
@@ -136961,9 +136968,11 @@ var User_1 = require("./User");
 var CustomMap_1 = require("./CustomMap");
 var Company_1 = require("./Company");
 var user = new User_1.User();
+console.log(user);
 var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map');
 customMap.addMarker(user);
+customMap.addMarker(company);
 // customMap.addCompanyMarker(company);
 // const user = new User();
 // console.log(user);
