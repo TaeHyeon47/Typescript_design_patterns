@@ -136896,6 +136896,34 @@ var User = /** @class */function () {
   return User;
 }();
 exports.User = User;
+},{"faker":"node_modules/faker/index.js"}],"src/Company.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Company = void 0;
+var faker_1 = __importDefault(require("faker"));
+var Company = /** @class */function () {
+  function Company() {
+    this.companyName = faker_1.default.company.companyName();
+    this.catchPhrase = faker_1.default.company.catchPhrase();
+    this.location = {
+      lat: parseFloat(faker_1.default.address.latitude()),
+      lng: parseFloat(faker_1.default.address.longitude())
+    };
+  }
+  Company.prototype.markerContent = function () {
+    return "\n    <div>\n      <h1>Company Name: ".concat(this.companyName, "</h1>\n      <h3>Catchphrase: ").concat(this.catchPhrase, "</h3>\n    </div>\n      ");
+  };
+  return Company;
+}();
+exports.Company = Company;
 },{"faker":"node_modules/faker/index.js"}],"src/CustomMap.ts":[function(require,module,exports) {
 "use strict";
 
@@ -136935,35 +136963,7 @@ var CustomMap = /** @class */function () {
   return CustomMap;
 }();
 exports.CustomMap = CustomMap;
-},{}],"src/Company.ts":[function(require,module,exports) {
-"use strict";
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Company = void 0;
-var faker_1 = __importDefault(require("faker"));
-var Company = /** @class */function () {
-  function Company() {
-    this.companyName = faker_1.default.company.companyName();
-    this.catchPhrase = faker_1.default.company.catchPhrase();
-    this.location = {
-      lat: parseFloat(faker_1.default.address.latitude()),
-      lng: parseFloat(faker_1.default.address.longitude())
-    };
-  }
-  Company.prototype.markerContent = function () {
-    return "\n    <div>\n      <h1>Company Name: ".concat(this.companyName, "</h1>\n      <h3>Catchphrase: ").concat(this.catchPhrase, "</h3>\n    </div>\n      ");
-  };
-  return Company;
-}();
-exports.Company = Company;
-},{"faker":"node_modules/faker/index.js"}],"src/index.ts":[function(require,module,exports) {
+},{}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
 /// <reference types="@types/google.maps" />
@@ -136971,21 +136971,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var User_1 = require("./User");
-// import { Company } from './Company';
-var CustomMap_1 = require("./CustomMap");
 var Company_1 = require("./Company");
+var CustomMap_1 = require("./CustomMap");
 var user = new User_1.User();
-console.log(user);
 var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map');
 customMap.addMarker(user);
 customMap.addMarker(company);
-// customMap.addCompanyMarker(company);
-// const user = new User();
-// console.log(user);
-// const company = new Company();
-// console.log(company);
-},{"./User":"src/User.ts","./CustomMap":"src/CustomMap.ts","./Company":"src/Company.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./User":"src/User.ts","./Company":"src/Company.ts","./CustomMap":"src/CustomMap.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
