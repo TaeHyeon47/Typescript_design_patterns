@@ -4,6 +4,7 @@
 //   constructor(collection: number[]) {
 //     this.collection = collection;
 //   }
+// sort(): void {}
 // }
 
 class Sorter {
