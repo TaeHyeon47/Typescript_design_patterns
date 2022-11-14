@@ -1,6 +1,7 @@
-console.log('hi there');
+console.log('123zzxc');
 
 const logSometing = () => {
   console.log('something');
-  console.log('sex');
 };
+
+logSometing();
