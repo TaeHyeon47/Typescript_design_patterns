@@ -18,7 +18,6 @@ class Sorter {
         //? All of this only works if collection is number[]
         // If collection is an array of numbers
         if (this.collection instanceof Array) {
-          // collection === number[]
           if (this.collection[j] > this.collection[j + 1]) {
             const leftHand = this.collection[j];
             this.collection[j] = this.collection[j + 1];
