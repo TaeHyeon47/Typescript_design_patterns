@@ -11,8 +11,13 @@ export class LinkedList {
   add(data: number): void {
     const node = new Node(data);
 
+    console.log('!!!!');
+    console.log(node);
+    console.log(this.head);
+
     if (!this.head) {
       this.head = node;
+      console.log(this.head);
       return;
     }
 
@@ -67,7 +72,6 @@ export class LinkedList {
   swap(leftIndex: number, rightIndex: number): void {
     const leftNode = this.at(leftIndex);
     const rightNode = this.at(rightIndex);
-
     const leftHand = leftNode.data;
     leftNode.data = rightNode.data;
     rightNode.data = leftHand;
